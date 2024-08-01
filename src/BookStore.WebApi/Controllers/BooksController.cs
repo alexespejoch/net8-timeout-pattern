@@ -2,6 +2,7 @@
 using BookStore.Domain.Interfaces;
 using BookStore.Domain.Models;
 using BookStore.WebApi.Dtos.Book;
+using Microsoft.AspNetCore.Http.Timeouts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore.WebApi.Controllers
@@ -30,6 +31,7 @@ namespace BookStore.WebApi.Controllers
         [HttpGet("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [RequestTimeout("CustomPolicy")]
         public async Task<IActionResult> GetById(int id)
         {
             var book = await _bookService.GetById(id, HttpContext.RequestAborted);
