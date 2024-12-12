@@ -21,7 +21,6 @@ namespace BookStore.Domain.Services
 
         public async Task<IEnumerable<Book>> GetAll(CancellationToken cancellationToken)
         {
-            //await Task.Delay(TimeSpan.FromMilliseconds(5000), cancellationToken);
             return await _bookRepository.GetAll(cancellationToken);
         }
 
